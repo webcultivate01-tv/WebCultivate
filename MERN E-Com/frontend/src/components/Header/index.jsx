@@ -1,12 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Search from '../Search';
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import { BsCart3 } from "react-icons/bs";
+import { IoMdGitCompare } from "react-icons/io";
+import { IoMdHeartEmpty } from "react-icons/io";
+import Tooltip from '@mui/material/Tooltip';
+import Navigation from './Navigation/index.jsx';
+
+
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: `2px solid ${(theme.vars ?? theme).palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
 
 
 const Header = () => {
     return (
       <header>
-           <div className="top-strip py-[10px] border-t-1 border-b-1 border-[rgba(0,0,0,0.1)]">
+           <div className="top-strip py-[10px] border-t-[1px] border-b-1 border-[rgba(0,0,0,0.1)]">
             <div className="container">
 
                 {/* left side  */}
@@ -33,7 +52,7 @@ const Header = () => {
            </div>
         
         {/* header */}
-         <div className="header py-[15px]">
+         <div className="header py-[10px] border-b-[1px] border-[rgba(0,0,0,0.1)]">
             <div className="container flex items-center justify-between">
 
                 <div className="col1 w-[25%]">
@@ -45,16 +64,45 @@ const Header = () => {
                 </div>
 
                 <div className="col3  w-[30%]  flex items-center p-[20px] ">
-                     <ul className='flex items-center gap-[3px]'>
+                     <ul className='flex items-center gap-[5px] w-full justify-end'>
                         <li className='list-none'>
-                           <Link to={"/login"}  className='link transition text-[14px]' >Login</Link> | &nbsp;
+                           <Link to={"/login"}  className='link transition text-[14px]' >Login</Link>&nbsp; | &nbsp;
                             <Link to={"/register"} className='link transition text-[14px]' >Register</Link>
                         </li> 
+                       
+                        <li>
+                             <Tooltip title="Caompare" >
+                            <IconButton aria-label="cart">
+                            <StyledBadge badgeContent={4} color="secondary">
+                            <IoMdGitCompare/>
+                            </StyledBadge>
+                            </IconButton>
+                            </Tooltip>
+                        </li>
+                         <li>
+                            <Tooltip title="Wishlist">
+                            <IconButton aria-label="cart">
+                            <StyledBadge badgeContent={4} color="secondary">
+                            <IoMdHeartEmpty/>
+                            </StyledBadge>
+                            </IconButton>
+                            </Tooltip>
+                        </li>
+                         <li>
+                            <Tooltip title="Cart">
+                            <IconButton aria-label="cart">
+                            <StyledBadge badgeContent={4} color="secondary">
+                            <BsCart3/>
+                            </StyledBadge>
+                            </IconButton>
+                            </Tooltip>
+                        </li>
                      </ul>
                 </div>
             </div>
          </div>
            
+           <Navigation/>
       </header>
     )
 }

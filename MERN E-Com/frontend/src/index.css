@@ -12,10 +12,11 @@
 body {
     font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-
+  background-color: #f5f0f0;
+  
 }
 
-.container {width: 90%; margin: auto;}
+.container {width: 95%; margin: auto;}
 
 .link{
   text-decoration: none;
@@ -26,4 +27,9 @@ body {
 .link:hover {
   color: #ff5252;
 
+}
+
+
+.MuiBadge-badge {
+  background-color: #ff5252 !important;
 }
