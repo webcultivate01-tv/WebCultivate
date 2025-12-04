@@ -49,8 +49,7 @@ const Header = () => {
 
                 </div>
             </div>
-           </div>
-        
+           </div>       
         {/* header */}
          <div className="header py-[10px] border-b-[1px] border-[rgba(0,0,0,0.1)]">
             <div className="container flex items-center justify-between">
@@ -101,8 +100,7 @@ const Header = () => {
                 </div>
             </div>
          </div>
-           
-           <Navigation/>
+         <Navigation/>
       </header>
     )
 }

@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import {Link} from 'react-router-dom';  
 import { IoMdClose } from "react-icons/io";
 import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
+
 
 import "../Navigation/style.css";
 
@@ -16,6 +18,7 @@ import MailIcon from "@mui/icons-material/Mail";
 const CategoryPanel = ({ isOpenCatPanel, setIsOpenCatPanel }) => {
 
   const [submenuIndex, setSubmenuIndex] = useState(null);
+  const [innerSubmenuIndex, setInnerSubmenuIndex] = useState(null);
 
   const toggleDrawer = (newOpen) => {
     setIsOpenCatPanel(newOpen);
@@ -23,7 +26,19 @@ const CategoryPanel = ({ isOpenCatPanel, setIsOpenCatPanel }) => {
 
 
     const openSubmenu = (index) => { 
-          setSubmenuIndex(index);
+        if(submenuIndex ===index){
+            setSubmenuIndex (null);
+        }else{
+            setSubmenuIndex (index);
+        }
+    }
+
+    const openInnerSubmenu = (index) => { 
+        if(innerSubmenuIndex ===index){
+            setInnerSubmenuIndex (null);
+        }else{
+            setInnerSubmenuIndex (index);
+        }
     }
 
   const DrawerList = (
@@ -31,8 +46,6 @@ const CategoryPanel = ({ isOpenCatPanel, setIsOpenCatPanel }) => {
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={() => toggleDrawer(false)}
-      onKeyDown={() => toggleDrawer(false)}
       className="categorypanel" >
 
      <h3 className="p-[12px] text-[15px] flex items-center justify-between">Shop By Category <IoMdClose className="text-[18px] cursor-pointer" onClick={() => toggleDrawer(false)} /> </h3>
@@ -40,44 +53,147 @@ const CategoryPanel = ({ isOpenCatPanel, setIsOpenCatPanel }) => {
     
      <div className="scroll">
         <ul>
-            <li className="list-none w-full flex items-center relative">
+ <li className="list-none w-full flex flex-col relative">
+  <div className="flex items-center justify-between w-full">
+    <Link to="/" className="w-full">
+      <Button className="w-full !text-left !justify-start !px-[12px] !text-[rgba(0,0,0.8)]">
+        Fashion
+      </Button>
+    </Link>
 
-                <Link to="/" className="w-full">
-                <Button className="w-full !text-left !justify-start !px-[12px] !text-[rgba(0,0,0.8)]">Fashion</Button>
-                </Link>
-                <FaPlus className=" absolute top-[10px] right-[15px] cursor-pointer" onClick={()=>openSubmenu(0)}/>
-               
-                 {/* subMenu */}
-                 {submenuIndex === 0 &&
-                                 <ul className="submenu absolute top-[100%] left-[0] w-full  pl-[12px]">
-                    <li className="list-none relative">
-                        <Link to="/" className="w-full">
-                     <Button className="w-full !text-left !justify-start !px-[12px] !text-[rgba(0,0,0.8)]">Apperial</Button>
-                         </Link>
-                     <FaPlus className=" absolute top-[10px] right-[15px] cursor-pointer"/>
-                    </li>     
-                         {/* sub-subMenu */}
-                    <ul className="inner-submenu absolute top-[100%] left-[0] w-full  pl-[12px] ">
-                         <li className="list-none relative">
-                              <Link  to="/" className=" link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px] ">Smart Tablet</Link>
-                         </li>    
-                         <li className="list-none relative">
-                              <Link  to="/" className=" link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]">Crepe T-Shirt</Link>
-                         </li>   
-                         <li className="list-none relative">
-                              <Link  to="/" className=" link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]">Leather Watch</Link>
-                         </li>  
-                         <li className="list-none relative">
-                              <Link  to="/" className=" link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]">Rolling Diamond</Link>
-                         </li>    
-                     </ul>
-                            
-                </ul>
-                 }
+    {submenuIndex === 0 ? (
+      <FaMinus className="cursor-pointer mr-[15px]" onClick={() => openSubmenu(0)} />
+    ) : (
+      <FaPlus className="cursor-pointer mr-[15px]" onClick={() => openSubmenu(0)} />
+    )}
+  </div>
 
-                
+  {/* subMenu */}
+  {submenuIndex === 0 && (
+    <ul className="submenu w-full pl-[12px] flex flex-col">
+      <li className="list-none relative">
+        <div className="flex items-center justify-between w-full">
+          <Link to="/" className="w-full">
+            <Button className="w-full !text-left !justify-start !px-[12px] !text-[rgba(0,0,0.8)]">
+              Apperial
+            </Button>
+          </Link>
+          {innerSubmenuIndex === 0 ? (
+            <FaMinus className="cursor-pointer mr-[15px]" onClick={() => openInnerSubmenu(0)} />
+          ) : (
+            <FaPlus className="cursor-pointer mr-[15px] " onClick={() => openInnerSubmenu(0)} />
+          )}
+        </div>
 
+        {innerSubmenuIndex === 0 && (
+          <ul className="inner-submenu w-full pl-[12px] flex flex-col">
+            <li className="list-none relative">
+              <Link to="/" className="link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]">
+                Smart Tablet
+              </Link>
             </li>
+            <li className="list-none relative">
+              <Link to="/" className="link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]">
+                Crepe T-Shirt
+              </Link>
+            </li>
+            <li className="list-none relative">
+              <Link to="/" className="link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]">
+                Leather Watch
+              </Link>
+            </li>
+            <li className="list-none relative">
+              <Link to="/" className="link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]">
+                Rolling Diamond
+              </Link>
+            </li>
+          </ul>
+        )}
+      </li>
+    </ul>
+  )}
+</li>
+
+
+
+<li className="list-none w-full flex flex-col relative">
+  <div className="flex items-center justify-between w-full">
+    <Link to="/" className="w-full">
+      <Button className="w-full !text-left !justify-start !px-[12px] !text-[rgba(0,0,0.8)]">
+        OuterWear
+      </Button>
+    </Link>
+
+    {submenuIndex === 1 ? (
+      <FaMinus className="cursor-pointer mr-[15px]" onClick={() => openSubmenu(1)} />
+    ) : (
+      <FaPlus className="cursor-pointer mr-[15px]" onClick={() => openSubmenu(1)} />
+    )}
+  </div>
+
+  {/* subMenu */}
+  {submenuIndex === 1 && (
+    <ul className="submenu w-full pl-[12px] flex flex-col">
+      <li className="list-none relative">
+        <div className="flex items-center justify-between w-full">
+          <Link to="/" className="w-full">
+            <Button className="w-full !text-left !justify-start !px-[12px] !text-[rgba(0,0,0.8)]">
+              Apperial
+            </Button>
+          </Link>
+
+          {innerSubmenuIndex === 1 ? (
+            <FaMinus className="cursor-pointer mr-[15px]" onClick={() => openInnerSubmenu(1)} />
+          ) : (
+            <FaPlus className="cursor-pointer mr-[15px]" onClick={() => openInnerSubmenu(1)} />
+          )}
+        </div>
+
+        {/* sub-subMenu */}
+        {innerSubmenuIndex === 1 && (
+          <ul className="inner-submenu w-full pl-[12px] flex flex-col">
+            <li className="list-none relative">
+              <Link
+                to="/"
+                className="link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]"
+              >
+                Smart Tablet
+              </Link>
+            </li>
+            <li className="list-none relative">
+              <Link
+                to="/"
+                className="link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]"
+              >
+                Crepe T-Shirt
+              </Link>
+            </li>
+            <li className="list-none relative">
+              <Link
+                to="/"
+                className="link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]"
+              >
+                Leather Watch
+              </Link>
+            </li>
+            <li className="list-none relative">
+              <Link
+                to="/"
+                className="link w-full !text-left !justify-start !px-[12px] !ml-[10px] transition text-[14px] leading-[30px]"
+              >
+                Rolling Diamond
+              </Link>
+            </li>
+          </ul>
+        )}
+      </li>
+    </ul>
+  )}
+</li>
+
+
+
+            
         </ul>
      </div>
      
