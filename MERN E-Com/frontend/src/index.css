@@ -13,6 +13,7 @@ body {
     font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   background-color: #f5f0f0;
+  overflow-x: hidden;
   
 }
 
@@ -36,3 +37,30 @@ body {
 
 nav ul button{text-transform: capitalize !important;}
 nav ul button:hover { background: none  !important;}
+
+
+
+.sliderHome{ overflow: inherit !important;}
+
+
+.swiper-button-prev, .swiper-button-next { display: flex; align-items: center; justify-content: center; background-color: #fff;border-radius: 100%; width: 45px; height: 45px; min-width: 45px;
+box-shadow: 0 ,1px 3px , #0000001f,0 1px 2px #0000003d !important;} 
+
+.swiper-button-prev:after,.swiper-button-next:after {font-size: 22px !important; color: #000 !important;}
+
+
+.homeCatSlider {overflow: inherit !important;}
+.homeCatSlider .swiper-button-prev { width: 30px; height: 30px; min-width: 30px; color: #000 !important; }
+.homeCatSlider .swiper-button-prev:after {font-size: 18px !important;}
+.homeCatSlider .swiper-button-next { width: 30px; height: 30px; min-width: 30px; color: #000 !important; }
+.homeCatSlider .swiper-button-prev:after {font-size: 18px !important;}
+
+.homeCatSlider .swiper-button-prev { left: -10px !important;}
+.homeCatSlider .swiper-button-next { right: -10px !important;}
+
+.homeCatSlider .item { border: 1px solid rgba(0,0,0,0.1);}
+
+.homeCatSlider .swiper-button-prev:hover ,.homeCatSlider .swiper-button-next:hover{ background: #ff5252 !important;}
+.homeCatSlider .swiper-button-prev:hover::after { color: white !important;}
+
+.homeCatSlider .item:hover img{transform: scale(1.1);}
