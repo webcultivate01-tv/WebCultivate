@@ -12,10 +12,19 @@
 body {
     font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  background-color: #f5f0f0;
+  background-color: #f5f5f5;
   overflow-x: hidden;
   
 }
+
+.homeBody {
+  background-color: #e5e5e5 !important;
+}
+
+
+::-webkit-scrollbar {width: 8px !important; height: 8px !important;}
+::-webkit-scrollbar-thumb {background: #ff5252;}
+::-webkit-scrollbar-track {background: #fff;}
 
 .container {width: 95%; margin: auto;}
 
@@ -48,6 +57,7 @@ box-shadow: 0 ,1px 3px , #0000001f,0 1px 2px #0000003d !important;}
 
 .swiper-button-prev:after,.swiper-button-next:after {font-size: 22px !important; color: #000 !important;}
 
+.smlBtn .swiper-button-prev, .smlBtn .swiper-button-next  { text: 10px !important ; width: 40px !important; height: 40px !important; min-width: 40px !important;}
 
 .homeCatSlider {overflow: inherit !important;}
 .homeCatSlider .swiper-button-prev { width: 30px; height: 30px; min-width: 30px; color: #000 !important; }
@@ -58,9 +68,19 @@ box-shadow: 0 ,1px 3px , #0000001f,0 1px 2px #0000003d !important;}
 .homeCatSlider .swiper-button-prev { left: -10px !important;}
 .homeCatSlider .swiper-button-next { right: -10px !important;}
 
-.homeCatSlider .item { border: 1px solid rgba(0,0,0,0.1);}
+.homeCatSlider .item { border: 1px solid rgba(0,0,0,0.1);
+background: #fff;}
 
 .homeCatSlider .swiper-button-prev:hover ,.homeCatSlider .swiper-button-next:hover{ background: #ff5252 !important;}
 .homeCatSlider .swiper-button-prev:hover::after { color: white !important;}
 
 .homeCatSlider .item:hover img{transform: scale(1.1);}
+
+
+
+
+/* // Free Shipping Section */
+
+.freeShipingBody {
+  background-color: #fff;
+}

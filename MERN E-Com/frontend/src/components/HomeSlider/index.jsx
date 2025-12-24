@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 
-import { Navigation } from 'swiper/modules';
+import { Navigation,Autoplay} from 'swiper/modules';
 
 
 const HomeSlider = ()=> {
@@ -16,7 +16,11 @@ const HomeSlider = ()=> {
 
      <div className="homeSlider py-[12px]">
         <div className="container">
-        <Swiper spaceBetween={10} navigation={true} modules={[Navigation]} className="sliderHome">
+        <Swiper spaceBetween={10} navigation={true}
+          autoplay={
+            {delay:1500,disableOnInteraction:false,}
+        }
+        modules={[Navigation,Autoplay]} className="sliderHome">
         <SwiperSlide>
             <div className="item rounded-[20px] overflow-hidden">
             <img src="https://serviceapi.spicezgold.com/download/1759938751802_30744.jpg" alt="slider img" className='w-full' />
